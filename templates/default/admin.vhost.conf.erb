@@ -1,0 +1,20 @@
+php_value date.timezone "America/New_York"
+
+php_value newrelic.license "<%= @license %>"
+php_value newrelic.appname "<%= @application %><% if @env == 'staging' %> (Staging)<% end %>"
+php_value newrelic.loglevel "info"
+
+<Directory <%= @docroot %>>
+  # Turn on Rewrites
+  RewriteEngine On
+
+  # Redirect to HTTPS execpt for the infostation path
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{REQUEST_URI} !infostation
+  RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+  # Otherwise redirect to index.php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</Directory>

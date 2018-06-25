@@ -1,0 +1,39 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+  # - name: centos-7.1
+
+suites:
+  - name: default
+    run_list:
+      - recipe[vc-config::default]
+    attributes:
+      deploy:
+        application1:
+          deploy_to: "/srv/www/application1"
+          phinx
+            config_path: "./config/phinx.php",
+          app_env:
+            PHINX_ENV: "staging"
+            PHINX_DBHOST: "host"
+            PHINX_DBNAME: "dbname"
+            PHINX_DBUSER: "dbuser"
+            PHINX_DBPASS: "dbpass"
+            PHINX_DBPORT: "dbport"
+        application2:
+          deploy_to: "/srv/www/application2"
+          phinx
+            config_path: "./config/phinx.php",
+          app_env:
+            PHINX_ENV: "staging"
+            PHINX_DBHOST: "host"
+            PHINX_DBNAME: "dbname"
+            PHINX_DBUSER: "dbuser"
+            PHINX_DBPASS: "dbpass"
+            PHINX_DBPORT: "dbport"
