@@ -1,9 +1,5 @@
 php_value date.timezone "America/New_York"
 
-php_value newrelic.license "<%= @license %>"
-php_value newrelic.appname "<%= @application %><% if @env == 'staging' %> (Staging)<% end %>"
-php_value newrelic.loglevel "info"
-
 <Directory <%= @docroot %>>
   # Turn on Rewrites
   RewriteEngine On
