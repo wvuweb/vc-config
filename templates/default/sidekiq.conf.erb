@@ -1,0 +1,7 @@
+check process <%= @sidekiq_name %>
+  with pidfile <%= @sidekiq_pid %>
+  start program = "/bin/su - <%= @sidekiq_user %> -c  'cd <%= @sidekiq_deploy_to %> && bundle exec sidekiq -d -e <%= @sidekiq_environment %> RAILS_ENV=<%= @sidekiq_environment %>'"
+  stop program = "/bin/su - <%= @sidekiq_user %> -c  'cd <%= @sidekiq_deploy_to %> && bundle exec sidekiqctl stop <%= @sidekiq_deploy_to %>tmp/pids/sidekiq.pid RAILS_ENV=<%= @sidekiq_environment %>'"
+  <% @sidekiq_checks.each do |check| %>
+  <%= check %>
+  <% end %>
