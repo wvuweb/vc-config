@@ -12,7 +12,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[vc-config::default]
+      - recipe[::default]
     attributes:
       deploy:
         application1:

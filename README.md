@@ -1,4 +1,4 @@
-vc-config Cookbook
+ Cookbook
 ===========================
 TODO: Enter the cookbook description here.
 
@@ -11,14 +11,14 @@ TODO: List your cookbook requirements. Be sure to include any requirements this 
 
 e.g.
 #### packages
-- `toaster` - vc-config needs toaster to brown your bagel.
+- `toaster` -  needs toaster to brown your bagel.
 
 Attributes
 ----------
 TODO: List your cookbook attributes here.
 
 e.g.
-#### vc-config::default
+#### ::default
 <table>
   <tr>
     <th>Key</th>
@@ -27,7 +27,7 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['vc-config']['bacon']</tt></td>
+    <td><tt>['']['bacon']</tt></td>
     <td>Boolean</td>
     <td>whether to include bacon</td>
     <td><tt>true</tt></td>
@@ -36,17 +36,17 @@ e.g.
 
 Usage
 -----
-#### vc-config::default
+#### ::default
 TODO: Write usage instructions for each cookbook.
 
 e.g.
-Just include `vc-config` in your node's `run_list`:
+Just include `` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[vc-config]"
+    "recipe[]"
   ]
 }
 ```
