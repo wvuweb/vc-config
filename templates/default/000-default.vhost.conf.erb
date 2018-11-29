@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+  ServerName <%= node['hostname'] %>
+  Redirect 204 /
+  ErrorLog ${APACHE_LOG_DIR}/loadbalancer-error.log
+  CustomLog ${APACHE_LOG_DIR}/loadbalancer-access.log combined
+</VirtualHost>
