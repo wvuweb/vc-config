@@ -35,6 +35,20 @@ def enable_conf
   link "#{conf_path}/sites-enabled/000-default.conf" do
     to "#{conf_path}/sites-available/000-default.conf"
   end
+
+
+  service "#{service_name}" do
+    action :restart
+  end
+
+  logrotate_app 'loadbalancer' do
+    path      ["/var/log/#{service_name}/loadbalancer-access.log", "/var/log/#{service_name}/loadbalancer-error.log"]
+    options   ['missingok', 'compress', 'delaycompress', ',notifempty', 'copytruncate', 'sharedscripts']
+    frequency 'daily'
+    create    '644 root adm'
+    rotate    7
+  end
+
 end
 
 
