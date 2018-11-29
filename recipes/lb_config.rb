@@ -7,16 +7,16 @@
 # All rights reserved - Do Not Redistribute
 #
 
-def service_name
+def apache_service_name
   node['platform_family'] == 'debian' ? 'apache2' : 'httpd'
 end
 
 def conf_dir
-  File.join('/', 'etc', service_name)
+  File.join('/', 'etc', apache_service_name)
 end
 
 def enable_conf
-  service = service_name
+  service_name = apache_service_name
   conf_path = conf_dir
 
   # Delete the default 000-default.conf
@@ -34,7 +34,7 @@ def enable_conf
 
   link "#{conf_path}/sites-enabled/000-default.conf" do
     to "#{conf_path}/sites-available/000-default.conf"
-    notifies :restart, service["#{service}"]
+    notifies :restart, service["#{service_name}"]
   end
 end
 
