@@ -34,7 +34,6 @@ def enable_conf
 
   link "#{conf_path}/sites-enabled/000-default.conf" do
     to "#{conf_path}/sites-available/000-default.conf"
-    notifies :restart, "service[#{service_name}]"
   end
 end
 
